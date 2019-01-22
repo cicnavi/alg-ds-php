@@ -1,0 +1,20 @@
+{
+    "name": "cicnavi/alg-ds-php",
+    "description": "Algorithms and Data Structures in PHP",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marko Ivancic",
+            "email": "cicnavi@gmail.com"
+        }
+    ],
+    "require": {
+        "psy/psysh": "@stable"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cicnavi\\": "src/"
+        }
+    }
+}
