@@ -86,6 +86,52 @@ final class FixedArrayTest extends TestCase
 		$this->assertEquals($value, $fixedArray->get($index));
 	}
 
+    /**
+     * @param FixedArray $fixedArray Array to check the size of.
+     *
+     * @depends clone testCanCreateInstanceOfSpecificCapacity
+     */
+    public function testContainsAddedValue(FixedArray $fixedArray)
+    {
+        $fixedArray->add(1);
+
+        $this->assertTrue($fixedArray->contains(1));
+        $this->assertFalse($fixedArray->contains(2));
+    }
+
+    /**
+     * @param FixedArray $fixedArray Array to check the size of.
+     *
+     * @depends clone testCanCreateInstanceOfSpecificCapacity
+     */
+    public function testItemCanBeDeleted(FixedArray $fixedArray)
+    {
+        $fixedArray->add(1);
+        $fixedArray->add(2);
+        $fixedArray->add(3);
+
+        $fixedArray->delete(0);
+
+        $this->assertTrue($fixedArray->contains(2));
+        $this->assertEquals(2, $fixedArray->get(0));
+        $this->assertEquals(2, $fixedArray->getSize());
+        $this->assertTrue($fixedArray->contains(3));
+        $this->assertFalse($fixedArray->contains(1));
+    }
+
+    /**
+     * @param FixedArray $fixedArray Array to check the size of.
+     *
+     * @depends clone testCanCreateInstanceOfSpecificCapacity
+     */
+    public function testSizeIsResolvedWhenIndexIsBiggerThanSize(FixedArray $fixedArray)
+    {
+        $fixedArray->add(1);
+        $fixedArray->insert(3, 2);
+
+        $this->assertEquals(4, $fixedArray->getSize());
+    }
+
 	/**
 	 * @param FixedArray $fixedArray Array to check the size of.
 	 *
