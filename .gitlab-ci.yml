@@ -18,7 +18,7 @@ phpunit:
     # Run tests
     - php vendor/bin/phpunit --coverage-text --colors=never tests
   tags:
-    - precommit
+    - dap
 
 codeanalysis:
   # Let's run that in parallel with phpunit.
@@ -34,4 +34,4 @@ codeanalysis:
     # Do static analysis
     #- phpstan analyse src
   tags:
-    - precommit
+    - dap
