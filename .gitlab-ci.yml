@@ -22,7 +22,7 @@ phpunit:
 
 codeanalysis:
   # Let's run that in parallel with phpunit.
-  stage: codeanalysis
+  stage: test
   cache: {} # Override with an empty object, since it is not needed in this job
   script:
     # We'll comply with the PSR2 standard and check all .php file in our app folder.
