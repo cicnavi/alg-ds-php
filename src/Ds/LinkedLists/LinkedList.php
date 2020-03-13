@@ -2,7 +2,7 @@
 
 namespace Cicnavi\Ds\LinkedLists;
 
-class LinkedList 
+class LinkedList
 {
 
     public function __construct()
