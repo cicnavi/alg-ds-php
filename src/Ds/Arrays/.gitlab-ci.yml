@@ -1,0 +1,37 @@
+image: cicnavi/dap:7.4
+
+# This folder is cached between builds
+# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
+cache:
+  # We key the cache using the branch's unique identifier.
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - vendor/
+
+before_script:
+  # Install composer packages for this app
+  - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+
+phpunit:
+  stage: test
+  script:
+    # Run tests
+    - php vendor/bin/phpunit --coverage-text --colors=never tests
+  tags:
+    - precommit
+
+codeanalysis:
+  # Let's run that in parallel with phpunit.
+  stage: codeanalysis
+  cache: {} # Override with an empty object, since it is not needed in this job
+  script:
+    # We'll comply with the PSR2 standard and check all .php file in our app folder.
+    - phpcs --standard=PSR2 --extensions=php src
+    # Test for general security issues
+    #- phpcs --standard=Security --extensions=php src
+    # Check for compatibility issues for specific PHP version
+    #- phpcs --standard=PHPCompatibility --extensions=php --runtime-set testVersion 7.4 src
+    # Do static analysis
+    #- phpstan analyse src
+  tags:
+    - precommit
