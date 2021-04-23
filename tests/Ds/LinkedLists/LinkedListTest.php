@@ -9,21 +9,21 @@ use Cicnavi\Ds\LinkedLists\LinkedList;
 
 final class LinkedListTest extends TestCase
 {
-    public function testCanCreateInstanceWithoutArguments()
+    public function testCanCreateInstanceWithoutArguments(): LinkedList
     {
         $linkedList = new LinkedList();
         $this->assertInstanceOf(LinkedList::class, $linkedList);
         return $linkedList;
     }
 
-    public function testIsEmpty()
+    public function testIsEmpty(): void
     {
         $linkedList = new LinkedList();
         $isEmpty = $linkedList->isEmpty();
         $this->assertTrue($isEmpty);
     }
 
-    public function testInsert()
+    public function testInsert(): void
     {
         $linkedList = new LinkedList();
         $linkedList->insertFirst(1);
@@ -40,7 +40,7 @@ final class LinkedListTest extends TestCase
         $this->assertEquals($indexNode, 5);
     }
 
-    public function testDelete()
+    public function testDelete(): void
     {
         $linkedList = new LinkedList();
         $linkedList->insertFirst(1);
@@ -50,7 +50,7 @@ final class LinkedListTest extends TestCase
     }
 
 
-    public function testCount()
+    public function testCount(): void
     {
         $linkedList = new LinkedList();
         $linkedList->insertFirst(1);
@@ -63,9 +63,9 @@ final class LinkedListTest extends TestCase
         $this->assertGreaterThan(0, $count);
     }
 
-    public function testCanNotInsertNewValueOnListWithWrongIndex()
+    public function testCanNotInsertNewValueOnListWithWrongIndex(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         $linkedList = new LinkedList();
         $value = 'First';
         $index = 10;

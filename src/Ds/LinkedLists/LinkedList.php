@@ -8,7 +8,7 @@ use OutOfRangeException;
 
 class LinkedList
 {
-    private $doubleLinkedList;
+    private SplDoublyLinkedList $doubleLinkedList;
 
     public function __construct()
     {
@@ -28,8 +28,10 @@ class LinkedList
      * Insert value to the top.
      *
      * @param mixed $data
+     *
+     * @return void
      */
-    public function insertFirst($data)
+    public function insertFirst($data): void
     {
         $node = new Node($data);
         if ($this->count() > 0) {
@@ -43,8 +45,10 @@ class LinkedList
      * Insert value to the last.
      *
      * @param mixed $data
+     *
+     * @return void
      */
-    public function insertLast($data)
+    public function insertLast($data): void
     {
         $node = new Node($data);
         $lastNode = $this->doubleLinkedList->top();
@@ -55,10 +59,13 @@ class LinkedList
 
     /**
      * Insert value to the specified index
+     *
      * @param int $index
-     * @param $data
+     * @param mixed $data
+     *
+     * @return void
      */
-    public function insertNode(int $index, $data)
+    public function insertNode(int $index, $data): void
     {
         $this->validateIndex($index);
         $node = new Node($data);
@@ -79,16 +86,20 @@ class LinkedList
 
     /**
      * Delete last item
+     *
+     * @return void
      */
-    public function deleteLastNode()
+    public function deleteLastNode(): void
     {
         $this->doubleLinkedList->pop();
     }
 
     /**
      * Delete first item
+     *
+     * @return void
      */
-    public function deleteFirstNode()
+    public function deleteFirstNode(): void
     {
         $this->doubleLinkedList->shift();
     }
@@ -97,8 +108,10 @@ class LinkedList
      * Delete item from list at specified index.
      *
      * @param int $index
+     *
+     * @return void
      */
-    public function deleteNode(int $index)
+    public function deleteNode(int $index): void
     {
         $this->validateIndex($index);
         $previousNode = null;
@@ -149,8 +162,10 @@ class LinkedList
      * @param int $index
      *
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
-    protected function validateIndex(int $index)
+    protected function validateIndex(int $index): void
     {
         // Index must be smaller than capacity and at least 0.
         if ($index >= $this->doubleLinkedList->count() || $index < 0) {

@@ -9,30 +9,30 @@ use Cicnavi\Ds\Arrays\FixedArray;
 
 final class FixedArrayTest extends TestCase
 {
-    public function testCanCreateInstanceWithoutArguments()
+    public function testCanCreateInstanceWithoutArguments(): FixedArray
     {
         $fixedArray = new FixedArray();
         $this->assertInstanceOf(FixedArray::class, $fixedArray);
         return $fixedArray;
     }
 
-    public function testCanCreateInstanceWithZeroCapacity()
+    public function testCanCreateInstanceWithZeroCapacity(): FixedArray
     {
         $fixedArray = new FixedArray(0);
         $this->assertInstanceOf(FixedArray::class, $fixedArray);
         return $fixedArray;
     }
 
-    public function testCanCreateInstanceOfSpecificCapacity()
+    public function testCanCreateInstanceOfSpecificCapacity(): FixedArray
     {
         $fixedArray = new FixedArray(10);
         $this->assertInstanceOf(FixedArray::class, $fixedArray);
         return $fixedArray;
     }
 
-    public function testCanNotCreateInstanceOfNegativeCapacity()
+    public function testCanNotCreateInstanceOfNegativeCapacity(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         (new FixedArray(-1));
     }
@@ -41,8 +41,10 @@ final class FixedArrayTest extends TestCase
      * @param FixedArray $fixedArray Array to check the size of.
      *
      * @depends testCanCreateInstanceOfSpecificCapacity
+     *
+     * @return void
      */
-    public function testInitialSizeIsZero(FixedArray $fixedArray)
+    public function testInitialSizeIsZero(FixedArray $fixedArray): void
     {
         $this->assertEquals(0, $fixedArray->getSize());
     }
@@ -51,8 +53,10 @@ final class FixedArrayTest extends TestCase
      * @param FixedArray $fixedArray Array to check the size of.
      *
      * @depends clone testCanCreateInstanceOfSpecificCapacity
+     *
+     * @return void
      */
-    public function testSizeIsOneAfterFirstSet(FixedArray $fixedArray)
+    public function testSizeIsOneAfterFirstSet(FixedArray $fixedArray): void
     {
         $fixedArray->set(0, 'First');
 
@@ -63,10 +67,12 @@ final class FixedArrayTest extends TestCase
      * @param FixedArray $fixedArray Array to check the size of.
      *
      * @depends clone testCanCreateInstanceOfSpecificCapacity
+     *
+     * @return void
      */
-    public function testCantAddIfArrayIsFull(FixedArray $fixedArray)
+    public function testCantAddIfArrayIsFull(FixedArray $fixedArray): void
     {
-        $this->expectException(OutOfRangeException::class);
+        $this->expectException(\OutOfRangeException::class);
 
         $fixedArray->set(9, 'Last');
 
@@ -77,8 +83,10 @@ final class FixedArrayTest extends TestCase
      * @param FixedArray $fixedArray Array to check the size of.
      *
      * @depends clone testCanCreateInstanceOfSpecificCapacity
+     *
+     * @return void
      */
-    public function testCanInsertNewValue(FixedArray $fixedArray)
+    public function testCanInsertNewValue(FixedArray $fixedArray): void
     {
         $value = 'Third';
         $index = 2;
@@ -93,8 +101,10 @@ final class FixedArrayTest extends TestCase
      * @param FixedArray $fixedArray Array to check the size of.
      *
      * @depends clone testCanCreateInstanceOfSpecificCapacity
+     *
+     * @return void
      */
-    public function testContainsAddedValue(FixedArray $fixedArray)
+    public function testContainsAddedValue(FixedArray $fixedArray): void
     {
         $fixedArray->add(1);
 
@@ -106,8 +116,10 @@ final class FixedArrayTest extends TestCase
      * @param FixedArray $fixedArray Array to check the size of.
      *
      * @depends clone testCanCreateInstanceOfSpecificCapacity
+     *
+     * @return void
      */
-    public function testItemCanBeDeleted(FixedArray $fixedArray)
+    public function testItemCanBeDeleted(FixedArray $fixedArray): void
     {
         $fixedArray->add(1);
         $fixedArray->add(2);
@@ -126,8 +138,10 @@ final class FixedArrayTest extends TestCase
      * @param FixedArray $fixedArray Array to check the size of.
      *
      * @depends clone testCanCreateInstanceOfSpecificCapacity
+     *
+     * @return void
      */
-    public function testSizeIsResolvedWhenIndexIsBiggerThanSize(FixedArray $fixedArray)
+    public function testSizeIsResolvedWhenIndexIsBiggerThanSize(FixedArray $fixedArray): void
     {
         $fixedArray->add(1);
         $fixedArray->insert(3, 2);
@@ -139,10 +153,12 @@ final class FixedArrayTest extends TestCase
      * @param FixedArray $fixedArray Array to check the size of.
      *
      * @depends clone testCanCreateInstanceWithZeroCapacity
+     *
+     * @return void
      */
-    public function testCanNotInsertNewValueOnArrayWithZeroCapacity(FixedArray $fixedArray)
+    public function testCanNotInsertNewValueOnArrayWithZeroCapacity(FixedArray $fixedArray): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $value = 'First';
         $index = 0;

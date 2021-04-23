@@ -81,7 +81,7 @@ class FixedArray
      * Insert value to the specified index.
      *
      * @param int $index
-     * @param $value
+     * @param mixed $value
      */
     public function insert(int $index, $value): void
     {
@@ -199,8 +199,10 @@ class FixedArray
      * @param int $index
      *
      * @throws InvalidArgumentException
+     *
+     * @return void
      */
-    protected function validateIndex(int $index)
+    protected function validateIndex(int $index): void
     {
         // Index must be smaller than capacity and at least 0.
         if ($index >= $this->capacity || $index < 0) {
@@ -210,8 +212,10 @@ class FixedArray
 
     /**
      * Ensure that size meets capacity.
+     *
+     * @return void
      */
-    protected function validateSize()
+    protected function validateSize(): void
     {
         if ($this->size >= $this->capacity) {
             throw new OutOfRangeException("Array is already full.");
@@ -222,8 +226,10 @@ class FixedArray
      * Resolve size when inserting value at index which is bigger than current size.
      *
      * @param int $index
+     *
+     * @return void
      */
-    protected function resolveSize(int $index)
+    protected function resolveSize(int $index): void
     {
         // If current size is smaller than this index, indicate the new size.
         if ($this->size <= $index) {
