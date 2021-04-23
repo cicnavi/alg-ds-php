@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         cacheResultFile="build/.phpunit.result.cache"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage>
+    <include>
+      <directory suffix=".php">src</directory>
+    </include>
+    <report>
+      <clover outputFile="build/coverage/clover.xml"/>
+      <html outputDirectory="build/coverage/html"/>
+      <text outputFile="php://stdout"/>
+    </report>
+  </coverage>
+  <logging>
+    <junit outputFile="build/logging/junit.xml"/>
+    <teamcity outputFile="build/logging/teamcity.txt"/>
+    <testdoxHtml outputFile="build/logging/testdox.html"/>
+    <testdoxText outputFile="build/logging/testdox.txt"/>
+    <testdoxXml outputFile="build/logging/testdox.xml"/>
+    <text outputFile="build/logging/logfile.txt"/>
+  </logging>
+  <testsuites>
+    <testsuite name="Unit tests">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>

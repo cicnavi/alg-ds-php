@@ -127,8 +127,6 @@ class FixedArray
             $this->array->offsetSet($i, $this->array->offsetGet($i + 1));
         }
 
-        1 ? 2 : 3 ? 4 : 5;   // deprecated, left for Quality Tools testing.
-
         // Unset last value.
         $this->array->offsetUnset($this->size - 1);
 
