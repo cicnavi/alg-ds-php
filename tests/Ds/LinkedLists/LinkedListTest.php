@@ -1,5 +1,8 @@
 <?php
+
 declare(strict_types=1);
+
+namespace Cicnavi\Tests\LinkedLists;
 
 use PHPUnit\Framework\TestCase;
 use Cicnavi\Ds\LinkedLists\LinkedList;
@@ -7,12 +10,12 @@ use Cicnavi\Ds\LinkedLists\LinkedList;
 final class LinkedListTest extends TestCase
 {
     public function testCanCreateInstanceWithoutArguments()
-	{
-		$linkedList = new LinkedList();
-		$this->assertInstanceOf(LinkedList::class, $linkedList);
-		return $linkedList;
+    {
+        $linkedList = new LinkedList();
+        $this->assertInstanceOf(LinkedList::class, $linkedList);
+        return $linkedList;
     }
-    
+
     public function testIsEmpty()
     {
         $linkedList = new LinkedList();
@@ -68,7 +71,5 @@ final class LinkedListTest extends TestCase
         $index = 10;
 
         $linkedList->insertNode($index, $value);
-
     }
-    
 }

@@ -1,10 +1,10 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Cicnavi\Ds\Arrays;
 
 use SplFixedArray;
-
 use InvalidArgumentException;
 use OutOfRangeException;
 
@@ -58,7 +58,6 @@ class FixedArray
 
         // Store value to specified index.
         $this->array->offsetSet($index, $value);
-
     }
 
     /**
@@ -184,7 +183,7 @@ class FixedArray
     public function contains($value): bool
     {
         // Iterate through all values and return true if it is the same as given value.
-        for($i = 0; $i < $this->size; $i++) {
+        for ($i = 0; $i < $this->size; $i++) {
             if ($this->array[$i] == $value) {
                 return true;
             }
@@ -204,7 +203,7 @@ class FixedArray
     protected function validateIndex(int $index)
     {
         // Index must be smaller than capacity and at least 0.
-        if ($index >= $this->capacity || $index < 0 ) {
+        if ($index >= $this->capacity || $index < 0) {
             throw new InvalidArgumentException("Invalid index.");
         }
     }
@@ -227,7 +226,7 @@ class FixedArray
     protected function resolveSize(int $index)
     {
         // If current size is smaller than this index, indicate the new size.
-        if ($this->size <= $index ) {
+        if ($this->size <= $index) {
             $this->size = $index + 1;
         }
     }

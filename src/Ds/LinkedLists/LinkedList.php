@@ -3,7 +3,6 @@
 namespace Cicnavi\Ds\LinkedLists;
 
 use SplDoublyLinkedList;
-
 use InvalidArgumentException;
 use OutOfRangeException;
 
@@ -106,16 +105,16 @@ class LinkedList
         $nextNode = null;
 
         if (($index - 1) >= 0) {
-          $previousNode = $this->doubleLinkedList->offsetGet($index - 1);
+            $previousNode = $this->doubleLinkedList->offsetGet($index - 1);
         }
 
-        if(($index + 1) < $this->count()) {
+        if (($index + 1) < $this->count()) {
             $nextNode = $this->doubleLinkedList->offsetGet($index + 1);
         }
 
         $this->doubleLinkedList->offsetUnset($index);
 
-        if ($previousNode != null && $nextNode!=null) {
+        if ($previousNode != null && $nextNode != null) {
             $previousNode->next = $nextNode;
             $this->doubleLinkedList->offsetSet($index - 1, $previousNode);
         }
@@ -154,9 +153,8 @@ class LinkedList
     protected function validateIndex(int $index)
     {
         // Index must be smaller than capacity and at least 0.
-        if ($index >= $this->doubleLinkedList->count() || $index < 0 ) {
+        if ($index >= $this->doubleLinkedList->count() || $index < 0) {
             throw new InvalidArgumentException("Invalid index.");
         }
     }
-
 }

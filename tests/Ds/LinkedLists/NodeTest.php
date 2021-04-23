@@ -1,5 +1,8 @@
 <?php
+
 declare(strict_types=1);
+
+namespace Cicnavi\Tests\LinkedLists;
 
 use PHPUnit\Framework\TestCase;
 use Cicnavi\Ds\LinkedLists\Node;
@@ -22,6 +25,6 @@ final class NodeTest extends TestCase
     public function testReadData()
     {
         $node = new Node('test phrase');
-        $this->assertEquals($node->readData(),'test phrase');
+        $this->assertEquals($node->readData(), 'test phrase');
     }
 }

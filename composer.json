@@ -17,6 +17,11 @@
             "Cicnavi\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Cicnavi\\Tests\\": "tests/"
+        }
+    },
     "require-dev": {
         "vimeo/psalm": "^4.7",
         "phpstan/phpstan": "^0.12.14",
