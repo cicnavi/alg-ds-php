@@ -90,7 +90,7 @@ class FixedArray
         // We can only insert new values if array is not already full.
         $this->validateSize();
 
-        // In case the new index is
+        // In case the new index is larger (or same) as size, index will be new size.
         if ($index >= $this->size) {
             $this->array->offsetSet($index, $value);
             $this->resolveSize($index);
@@ -98,8 +98,6 @@ class FixedArray
             for ($i = $this->size; $i > $index; $i--) {
                 $this->array->offsetSet($i, $this->array->offsetGet($i - 1));
             }
-
-            $a = 'something'; // left for Quality Tools testing.
 
             $this->array->offsetSet($index, $value);
 

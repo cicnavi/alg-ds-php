@@ -27,6 +27,7 @@ final class FixedArrayTest extends TestCase
     {
         $fixedArray = new FixedArray(10);
         $this->assertInstanceOf(FixedArray::class, $fixedArray);
+        $this->assertEquals(10, $fixedArray->getCapacity());
         return $fixedArray;
     }
 
@@ -80,7 +81,7 @@ final class FixedArrayTest extends TestCase
     }
 
     /**
-     * @param FixedArray $fixedArray Array to check the size of.
+     * @param FixedArray $fixedArray Array to insert new value to.
      *
      * @depends clone testCanCreateInstanceOfSpecificCapacity
      *
@@ -95,6 +96,17 @@ final class FixedArrayTest extends TestCase
 
         $this->assertEquals(3, $fixedArray->getSize());
         $this->assertEquals($value, $fixedArray->get($index));
+
+        // Test that we can insert value to the index below size
+        $secondValue = 'Second';
+        $secondIndex = 1;
+
+        $fixedArray->insert($secondIndex, $secondValue);
+
+        $this->assertEquals(4, $fixedArray->getSize());
+        $this->assertEquals($secondValue, $fixedArray->get($secondIndex));
+        // Since we added one value, old value was moved + 1.
+        $this->assertEquals($value, $fixedArray->get($index + 1));
     }
 
     /**
@@ -132,6 +144,10 @@ final class FixedArrayTest extends TestCase
         $this->assertEquals(2, $fixedArray->getSize());
         $this->assertTrue($fixedArray->contains(3));
         $this->assertFalse($fixedArray->contains(1));
+
+        // Test deleting index which is greater than size.
+        $fixedArray->delete(5);
+        $this->assertEquals(2, $fixedArray->getSize());
     }
 
     /**
