@@ -6,7 +6,7 @@ To use the available classes in psysh, do this:
 
 ```shell script
 ./vendor/bin/psysh
-$fixedArray = new Cicnavi\Ds\Arrays\FixedArray(10);
+$fixedArray = new Cicnavi\DataStructures\Arrays\FixedArray(10);
 ```
 
 ## phpunit
@@ -18,5 +18,5 @@ To run all tests:
 
 To run specific test:
 ```shell script
-./vendor/bin/phpunit --testdox tests/Ds/Arrays/FixedArrayTest.php
+./vendor/bin/phpunit --testdox tests/DataStructures/Arrays/FixedArrayTest.php
 ```

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cicnavi\Ds\Arrays;
+namespace Cicnavi\DataStructures\Arrays;
 
 use SplFixedArray;
 use InvalidArgumentException;

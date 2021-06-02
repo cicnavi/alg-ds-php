@@ -1,6 +1,6 @@
 <?php
 
-namespace Cicnavi\Ds\LinkedLists;
+namespace Cicnavi\DataStructures\LinkedLists;
 
 class Node
 {

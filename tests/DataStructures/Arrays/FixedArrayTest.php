@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Cicnavi\Tests\LinkedLists;
+namespace Cicnavi\Tests\DataStructures\LinkedLists;
 
 use PHPUnit\Framework\TestCase;
-use Cicnavi\Ds\Arrays\FixedArray;
+use Cicnavi\DataStructures\Arrays\FixedArray;
 
 final class FixedArrayTest extends TestCase
 {

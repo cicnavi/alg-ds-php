@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Cicnavi\Tests\LinkedLists;
+namespace Cicnavi\Tests\DataStructures\LinkedLists;
 
 use PHPUnit\Framework\TestCase;
-use Cicnavi\Ds\LinkedLists\Node;
+use Cicnavi\DataStructures\LinkedLists\Node;
 
 final class NodeTest extends TestCase
 {
